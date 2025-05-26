@@ -12,7 +12,7 @@ CREATE TABLE Countries (
 
 CREATE TABLE GeoIPCache (
     ID INT AUTO_INCREMENT,
-    IPRange INT,
+    IPRange VARCHAR(50),
     CountryID INT,
     PRIMARY KEY (ID),
     FOREIGN KEY (CountryID) REFERENCES Countries(ID)
@@ -42,7 +42,7 @@ CREATE TABLE Logs (
 -- Create a table for storing reporting data, which will be send to a separate application in the CSV format for analytics purposes (Columns:  Date, ProductName, Orders)
 CREATE TABLE ProductReporting (
     Date DATE,
-    ProductName VARCHAR (50),
+    ProductName VARCHAR(50),
     Orders INT,
-    PRIMARY KEY (Date)
+    PRIMARY KEY (Date, ProductName)
 ) ENGINE = CSV;
